@@ -1,0 +1,29 @@
+.row{
+float: left;
+}
+
+.column{
+    height: 20px;
+    width: 20px;
+    outline: 1px solid black;
+}
+.red{
+    background-color: red;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.palette{
+    height: 20px;
+    width: 20px;
+    outline: 1px solid black;
+    float:left;
+}
+
+footer{
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+}
