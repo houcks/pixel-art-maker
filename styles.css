@@ -2,18 +2,13 @@
 float: left;
 }
 
-.column{
+.square{
     height: 20px;
     width: 20px;
     outline: 1px solid black;
-}
-.red{
-    background-color: red;
+    float: left;
 }
 
-.blue{
-    background-color: blue;
-}
 
 .palette{
     height: 20px;
@@ -26,4 +21,100 @@ footer{
     position: absolute;
     bottom: 50px;
     width: 100%;
+}
+
+.black{
+    background-color: black;
+}
+
+.red{
+    background-color: red;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.darkred{
+    background-color: darkred;
+}
+
+.crimson{
+    background-color: crimson;
+}
+
+.darkorange{
+    background-color: darkorange;
+}
+
+.orange{
+    background-color: orange;
+}
+
+.gold{
+    background-color: gold;
+}
+
+.lightyellow{
+    background-color: lightyellow;
+}
+
+.khaki{
+    background-color: khaki;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.lawngreen{
+    background-color: lawngreen;
+}
+
+.green{
+    background-color: green;
+}
+
+.darkgreen{
+    background-color: darkgreen;
+}
+
+.mediumblue{
+    background-color: mediumblue;
+}
+
+.darkblue{
+    background-color: darkblue;
+}
+
+.darkviolet{
+    background-color: darkviolet;
+}
+
+.purple{
+    background-color: purple;
+}
+
+.indigo{
+    background-color: indigo;
+}
+
+.pink{
+    background-color: pink;
+}
+
+.hotpink{
+    background-color: hotpink;
+}
+
+.deeppink{
+    background-color: deeppink;
+}
+
+.white{
+    background-color: white;
+}
+
+.gray{
+    background-color: gray;
 }
