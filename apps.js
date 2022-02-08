@@ -1,34 +1,31 @@
 var brushColor;
 var paint = false;
-document.body.addEventListener('mousedown', function () {paint = true});
-document.body.addEventListener('mouseup', function () {paint = false});
+grid.addEventListener('mousedown', function () {paint = true});
+grid.addEventListener('mouseup', function () {paint = false});
 
-let colors = ['red', 'darkred', ,'firebrick', 'crimson', 'orangered', 'darkorange', 'orange', 'gold', 
+//array used for color palette creation
+let colors = ['red', 'darkred','firebrick', 'crimson', 'orangered', 'darkorange', 'orange', 'gold', 
             'lightyellow', 'moccasin', 'khaki', 'yellow', 'lawngreen', 'green', 'darkgreen', 'aquamarine', 'cyan',
             'blue', 'mediumblue', 'darkblue', 'darkviolet', 'purple', 'indigo', 'pink', 
             'hotpink', 'deeppink', 'white', 'gray', 'black'];
 
 //creates a grid of 'square' div's and add event listeners to trigger coloring
 function createGrid(size){
-    let grid = document.getElementById('grid');
+    var grid = document.getElementById('grid');
         for(var j = 0; j < size; j++){
             let squares = document.createElement('div');
             squares.classList.add('square');
-            squares.addEventListener('mousedown', function() {paint = true; toggleColor()});
+            squares.addEventListener('mousedown', function (event){paint = true; toggleColor(event)});
             squares.addEventListener('mouseenter', toggleColor);
             grid.appendChild(squares);
         }
 }
 
 //removes old color if not matching current brush color or paints new color
-function toggleColor(){
-    var square = document.querySelectorAll(':hover');
-    square = square[square.length - 1];
-    if(paint === true && square.classList.item(0) === 'square'){
-        if(square.classList.item(1) !== brushColor){
-            square.classList.remove(square.classList.item(1));
-        }
-        square.classList.add(`${brushColor}`); 
+function toggleColor(event){
+    console.log(event.target)
+    if(paint === true){
+                event.target.style.backgroundColor = brushColor; 
     }
 }
 
@@ -41,21 +38,40 @@ function createPalette(){
         colorSquare.addEventListener('click', changeBrush);
         grid.appendChild(colorSquare);
     }
+    palette = document.getElementById('colorPicker');
+    palette.addEventListener('input', customColor)
+    grid.appendChild(palette)
 
-    let currentColor = document.createElement('div');
+    //diplays current color selected from palette
+    var currentColor = document.createElement('div');
     currentColor.textContent = 'Current Color';
     grid.appendChild(currentColor);
     let color = document.createElement('div');
-    color.id = 'currentColor';
+    color.id = 'current-color';
     grid.appendChild(color);
 }
 
+//called from createPallete event listener to set color
 function changeBrush(event){
     brushColor = event.target.classList.item(1);
-    let currentColor = document.getElementById('currentColor');
-    currentColor.classList.remove(currentColor.classList.item(0));
-    currentColor.classList.toggle(`${brushColor}`);   
+    var currentColor = document.getElementById('current-color');
+    currentColor.style.backgroundColor = brushColor; 
 }
 
-createGrid(300);
+//sets custom color from input and sets currentColor bgc 
+function customColor(){
+    brushColor = document.getElementById("colorPicker").value;
+    document.getElementById('current-color').style.backgroundColor = brushColor;
+}
+
+//sets event listener to clear button that loops through and removes background color
+var clear = document.getElementById('clear');
+clear.addEventListener('click', clearBoard)
+function clearBoard(){
+    var squares = document.getElementsByClassName('square');
+    for(var i = 0; i < squares.length; i++){
+        squares[i].style.backgroundColor = "";
+    }
+}
+createGrid(1000);
 createPalette();

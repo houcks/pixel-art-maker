@@ -8,12 +8,18 @@ body{
     background-color: floralwhite;
 }
 
+#colorPicker{
+    height: 33px;
+    width: 33px;
+    border-radius: 50%;
+}
+
 #grid{
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 500px;
+    width: 1000px;
 }
 
 .square{
@@ -33,7 +39,7 @@ body{
 
 }
 
-#currentColor{
+#current-color{
     text-align: left;
     height: 30px;
     width: 30px;
