@@ -1,12 +1,9 @@
-var brushColor = 'black';
+var brushColor;
 
-let colors = ['red', 'darkred', 'crimson', 'darkorange', 'orange', 'gold', 
-            'lightyellow', 'khaki', 'yellow', 'lawngreen', 'green', 'darkgreen', 
+let colors = ['red', 'darkred', ,'firebrick', 'crimson', 'orangered', 'darkorange', 'orange', 'gold', 
+            'lightyellow', 'moccasin', 'khaki', 'yellow', 'lawngreen', 'green', 'darkgreen', 'aquamarine', 'cyan',
             'blue', 'mediumblue', 'darkblue', 'darkviolet', 'purple', 'indigo', 'pink', 
             'hotpink', 'deeppink', 'white', 'gray', 'black'];
-
-let grid = document.getElementById('grid');
-grid.style.cssText = "height: 100%; width: 100%;"
 
 //removes old color if not matching current brush color or paints new color
 function toggleColor(event){
@@ -17,6 +14,7 @@ function toggleColor(event){
 }
 
 function createGrid(size){
+    let grid = document.getElementById('grid');
         for(var j = 0; j < size; j++){
             let squares = document.createElement('div');
             squares.classList.add('square');
@@ -27,23 +25,25 @@ function createGrid(size){
 
 //loops over array of colors to create palette of colors to choose from
 function createPalette(){
-    let footer = document.querySelector('footer');
     for(var i = 0; i < colors.length; i++){
         let colorSquare = document.createElement('div');
         colorSquare.classList.toggle('palette');
         colorSquare.classList.add(`${colors[i]}`);
         colorSquare.addEventListener('click', changeBrush);
-        footer.appendChild(colorSquare);
+        grid.appendChild(colorSquare);
     }
 
     let currentColor = document.createElement('div');
-    currentColor.classList.add('currentColor');
-    footer.appendChild(currentColor);
+    currentColor.id = 'currentColor';
+    grid.appendChild(currentColor);
 }
 
 function changeBrush(event){
     brushColor = event.target.classList.item(1);
+    let currentColor = document.getElementById('currentColor');
+    currentColor.classList.remove(currentColor.classList.item(0));
+    currentColor.classList.toggle(`${brushColor}`);   
 }
 
-createGrid(2059);
+createGrid(300);
 createPalette();
