@@ -1,5 +1,5 @@
 var brushColor;
-
+var paint = false;
 let colors = ['red', 'darkred', ,'firebrick', 'crimson', 'orangered', 'darkorange', 'orange', 'gold', 
             'lightyellow', 'moccasin', 'khaki', 'yellow', 'lawngreen', 'green', 'darkgreen', 'aquamarine', 'cyan',
             'blue', 'mediumblue', 'darkblue', 'darkviolet', 'purple', 'indigo', 'pink', 
@@ -7,10 +7,12 @@ let colors = ['red', 'darkred', ,'firebrick', 'crimson', 'orangered', 'darkorang
 
 //removes old color if not matching current brush color or paints new color
 function toggleColor(event){
-    if(event.target.classList.item(1) !== brushColor){
-        event.target.classList.remove(event.target.classList.item(1));
+    if(paint === true){
+        if(event.target.classList.item(1) !== brushColor){
+            event.target.classList.remove(event.target.classList.item(1));
+        }
+        event.target.classList.toggle(`${brushColor}`); 
     }
-    event.target.classList.toggle(`${brushColor}`);   
 }
 
 function createGrid(size){
@@ -18,7 +20,9 @@ function createGrid(size){
         for(var j = 0; j < size; j++){
             let squares = document.createElement('div');
             squares.classList.add('square');
-            squares.addEventListener('click', toggleColor);
+            squares.addEventListener('mousedown', function () {paint = true});
+            squares.addEventListener('mouseup', function () {paint = false});
+            squares.addEventListener('mouseenter', toggleColor);
             grid.appendChild(squares);
         }
 }
