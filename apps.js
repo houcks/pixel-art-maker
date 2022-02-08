@@ -34,8 +34,11 @@ function createPalette(){
     }
 
     let currentColor = document.createElement('div');
-    currentColor.id = 'currentColor';
+    currentColor.textContent = 'Current Color';
     grid.appendChild(currentColor);
+    let color = document.createElement('div');
+    color.id = 'currentColor';
+    grid.appendChild(color);
 }
 
 function changeBrush(event){
